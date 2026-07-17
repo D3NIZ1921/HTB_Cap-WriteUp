@@ -84,7 +84,7 @@ TCP stream'i filtreleyerek FTP trafiğine odaklanıyoruz (`tcp.stream eq 3`):
 
 Paketlerde şunları görüyoruz:
 - `Request: USER nathan`
-- `Request: PASS Buck3tH4TF0RM3!`
+- `Request: PASS Buc[CENCORED]0RM3!`
 - `Response: 230 Login successful.`
 
 Tüm konuşmayı net görmek için pakete sağ tıklayıp **Follow → TCP Stream** seçiyoruz:
@@ -95,7 +95,7 @@ Ele geçirilen kimlik bilgileri:
 
 ```
 Kullanıcı adı : nathan
-Parola        : Buck3tH4TF0RM3!
+Parola        : Buc[CENCORED]0RM3!
 ```
 
 Aynı işlemi terminalden `tshark` ile de yapabilirdik:
@@ -112,7 +112,7 @@ tshark -r 0.pcap -Y ftp -T fields -e ftp.request.command -e ftp.request.arg
 
 ```bash
 ssh nathan@10.129.72.105
-# Parola: Buck3tH4TF0RM3!
+# Parola: Bu[CENCORED]0RM3!
 ```
 
 ![SSH ile giriş](ss/7.png)
@@ -128,7 +128,7 @@ cat user.txt
 
 ![user flag](ss/8.png)
 
-**User flag** elde edildi. ✅
+**User flag** bizde.
 
 ---
 
@@ -184,7 +184,7 @@ Web Dashboard  ──►  /data/1 → /data/0  (IDOR)
         │
         ▼
 0.pcap indir  ──►  Wireshark: FTP cleartext creds
-        │              (nathan : Buck3tH4TF0RM3!)
+        │             
         ▼
 SSH ile giriş  ──►  user.txt
         │
