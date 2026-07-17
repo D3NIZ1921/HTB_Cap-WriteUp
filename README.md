@@ -34,7 +34,6 @@ Sonuçlar **3 açık TCP portu** gösteriyor:
 
 Öne çıkanlar: 80. portta bir Python web uygulaması (Gunicorn arka planda çalışıyor) ve 21. portta FTP servisi var. FTP'nin cleartext bir protokol olması ileride işimize yarayacak.
 
-> **Task 1 — How many TCP ports are open?** Cevap: **3**
 
 ---
 
@@ -52,7 +51,6 @@ http://10.129.72.105/data/1
 
 ![data/1 sayfası](ss/3.png)
 
-Bu snapshot'ta tüm değerler `0` görünüyor (bize ait boş bir yakalama).
 
 ---
 
@@ -72,7 +70,7 @@ Bu sefer boş değil! `72 paket`, `69 IP paketi`, `69 TCP paketi` yakalanmış b
 
 **"Download"** butonuna basıp `0.pcap` dosyasını indiriyoruz.
 
-> **Neden çalışıyor?** Uygulama, kaynağa erişimde yetkilendirme (authorization) kontrolü yapmıyor; sadece ID'yi doğrudan referans olarak kullanıyor. Saldırgan ID'yi tahmin/değiştirerek (`0, 1, 2...`) başkalarının verilerine ulaşabiliyor.
+Uygulama, kaynağa erişimde yetkilendirme (authorization) kontrolü yapmıyor; sadece ID'yi doğrudan referans olarak kullanıyor. Saldırgan ID'yi tahmin/değiştirerek (`0, 1, 2...`) başkalarının verilerine ulaşabiliyor.
 
 ---
 
@@ -162,7 +160,7 @@ Bu capability'yi istismar ederek root shell alıyoruz:
 
 Prompt `nathan@cap:~$` → `root@cap:~#` oldu. Artık root'uz. 🎉
 
-> **Neden çalışıyor?** `cap_setuid` yetkisi, prosesin herhangi bir UID'e (0 = root dahil) geçmesine izin verir. Python `os.setuid(0)` çağrısıyla root'a yükselir, ardından açtığı bash shell root ayrıcalıklarını miras alır.
+`cap_setuid` yetkisi, prosesin herhangi bir UID'e (0 = root dahil) geçmesine izin verir. Python `os.setuid(0)` çağrısıyla root'a yükselir, ardından açtığı bash shell root ayrıcalıklarını miras alır.
 
 ### root.txt
 
@@ -172,7 +170,7 @@ cat /root/root.txt
 
 ![root flag](ss/11.png)
 
-**Root flag** elde edildi. ✅ Makine tamamlandı.
+**Root flag** elde edildi.
 
 ---
 
@@ -214,4 +212,3 @@ os.setuid(0) + /bin/bash  ──►  root  ──►  root.txt
 
 ---
 
-*Bu writeup yalnızca eğitim amaçlıdır ve yetkili bir lab ortamında (HackTheBox) gerçekleştirilmiştir.*
